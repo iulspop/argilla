@@ -45,7 +45,7 @@ class ArgillaTrainer(object):
         train_size: Optional[float] = None,
         seed: Optional[int] = None,
         gpu_id: Optional[int] = -1,
-        framework_kwargs: Optional[dict] = {},
+        framework_kwargs: Optional[dict] = None,
         **load_kwargs: Optional[dict],
     ) -> None:
         """
@@ -73,6 +73,7 @@ class ArgillaTrainer(object):
             framework_kwargs (dict): additional arguments for the framework.
             **load_kwargs: arguments for the rg.load() function.
         """
+        framework_kwargs = {} if framework_kwargs is None else framework_kwargs
         argilla = active_client()
 
         self._name = name

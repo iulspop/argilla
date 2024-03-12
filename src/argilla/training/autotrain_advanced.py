@@ -24,7 +24,7 @@ from argilla.utils.dependency import require_dependencies
 
 
 class AutoTrainMixin:
-    def prepare_dataset(self, data_dict: Optional[dict] = {}) -> None:
+    def prepare_dataset(self, data_dict: Optional[dict] = None) -> None:
         """
         This function prepares a dataset for autotrain using a dictionary of data and specific column
         mappings.
@@ -34,6 +34,7 @@ class AutoTrainMixin:
             to the `AutoTrainDataset` constructor. These parameters are optional and can be used to
             customize the dataset preparation process.
         """
+        data_dict = {} if data_dict is None else data_dict
         from autotrain.dataset import AutoTrainDataset
 
         self.dset = AutoTrainDataset(

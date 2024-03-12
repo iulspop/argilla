@@ -50,7 +50,7 @@ class ArgillaTrainer(ArgillaTrainerV1):
         filter_by: Optional[Dict[str, Union["ResponseStatusFilter", List["ResponseStatusFilter"]]]] = None,
         sort_by: Optional[List["SortBy"]] = None,
         max_records: Optional[int] = None,
-        framework_kwargs: Optional[dict] = {},
+        framework_kwargs: Optional[dict] = None,
     ) -> None:
         """
         Initialize an Argilla Trainer.
@@ -83,6 +83,7 @@ class ArgillaTrainer(ArgillaTrainerV1):
                 for the arguments that can be passed to the model card.
             **load_kwargs: arguments for the rg.load() function.
         """
+        framework_kwargs = {} if framework_kwargs is None else framework_kwargs
         if filter_by:
             dataset = dataset.filter_by(**filter_by)
         if sort_by:
