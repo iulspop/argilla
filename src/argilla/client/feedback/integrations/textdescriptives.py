@@ -129,7 +129,7 @@ class TextDescriptivesExtractor:
         field_text = []
         columns: list[str] = _get_metrics_from_texts(["test"], basic_metrics=basic_metrics).columns.tolist()
         for idx, record in enumerate(records):
-            if all([field in record.metadata for field in columns]) and not overwrite:
+            if all(field in record.metadata for field in columns) and not overwrite:
                 idx_present.append(idx)
                 metadata_relevant: dict[str, Any] = {key: record.metadata[key] for key in columns}
                 data_present.append(metadata_relevant)
@@ -393,7 +393,7 @@ class TextDescriptivesExtractor:
         if fields is None:
             fields = [field.name for field in dataset.fields]
         available_fields = [field.name for field in dataset.fields]
-        if not all([field in available_fields for field in fields]):
+        if not all(field in available_fields for field in fields):
             raise ValueError(f"Fields {fields} are not present in the dataset.")
         # Create metadata properties based on dataframe columns and data types
         dataset = self._create_metadata_property_settings(dataset=dataset, fields=fields, overwrite=overwrite)

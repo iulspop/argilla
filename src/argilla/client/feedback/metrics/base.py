@@ -193,7 +193,7 @@ class MetricBase:
         if isinstance(metric_names, str):
             metric_names = [metric_names]
 
-        if any([metric not in self._allowed_metrics for metric in metric_names]):
+        if any(metric not in self._allowed_metrics for metric in metric_names):
             raise ValueError(
                 f"Metrics allowed for question {self._question_name}: {list(self._allowed_metrics.keys())}"
             )

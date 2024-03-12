@@ -216,7 +216,7 @@ class SentenceTransformersExtractor:
         if fields is None:
             fields = [field.name for field in dataset.fields]
         available_fields = [field.name for field in dataset.fields]
-        if not all([field in available_fields for field in fields]):
+        if not all(field in available_fields for field in fields):
             raise ValueError(f"Fields {fields} are not present in the dataset.")
 
         dataset = self._create_vector_settings(dataset=dataset, fields=fields, overwrite=overwrite)
