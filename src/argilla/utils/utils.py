@@ -100,7 +100,7 @@ class LazyargillaModule(ModuleType):
             warnings.warn(
                 f"Importing '{class_name or module_name}' from the argilla namespace (that is "
                 f"`argilla.{class_name or module_name}`) is deprecated and will not work in a future version. "
-                f"Make sure you update your code accordingly.",
+                "Make sure you update your code accordingly.",
                 category=FutureWarning,
             )
 

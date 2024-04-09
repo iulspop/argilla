@@ -95,7 +95,7 @@ def validate_metadata_properties(
     for metadata_property in metadata_properties:
         if not isinstance(metadata_property, AllowedMetadataPropertyTypes.__args__):
             raise TypeError(
-                f"Expected `metadata_properties` to be a list of"
+                "Expected `metadata_properties` to be a list of"
                 f" `{'`, `'.join([arg.__name__ for arg in AllowedMetadataPropertyTypes.__args__])}` got a"
                 f" metadata property in the list with type type {type(metadata_property)} instead."
             )
